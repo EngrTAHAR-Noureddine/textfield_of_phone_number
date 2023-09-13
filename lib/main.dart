@@ -113,16 +113,21 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Image.network(
                   urlPhoto,
                 errorBuilder: (BuildContext context,Object obj,StackTrace? stack ){
-                  return const Text("The Image could not loaded because the internet or damage in photo");
+                    // The Image could not loaded because the internet or damage in photo
+                  return Image.asset("assets/default_image.jpg");
                 },
                 loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? imgChunk){
-                  return (imgChunk != null)? const CircularProgressIndicator() : child;
+                  return (imgChunk != null)? const Center(
+                      child: SizedBox(
+                          width: 50,
+                          height: 50,
+                          child: CircularProgressIndicator())) : child;
                 },
                 alignment: Alignment.center,
                 fit: BoxFit.fill,
               ),
             )
-            
+
           ],
         ),
       ),
